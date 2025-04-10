@@ -1,0 +1,10 @@
+# Scatter Plot – Literacy Rate vs School Count colored by Region
+if "Total Schools" in df.columns and "Region" in df.columns:
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x="Total Schools", y="Literacy Rate", hue="Region", data=df, palette="viridis", alpha=0.8)
+    plt.title("Literacy vs Schools by Region")
+    plt.xlabel("Total Schools")
+    plt.ylabel("Literacy Rate")
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
