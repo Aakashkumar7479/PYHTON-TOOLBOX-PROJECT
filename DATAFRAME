@@ -1,0 +1,54 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset
+df = pd.read_csv(r"/Users/aakashkumar/Desktop/german.csv", encoding="ISO-8859-1")
+
+# Display the entire DataFrame (can be commented if dataset is large)
+print(df.to_string())
+
+# Basic Overview
+print("\n📌 First 5 rows of dataset:")
+print(df.head())
+
+print("\n📌 Shape of dataset (rows, columns):", df.shape)
+
+# Unique values in 'Duration in month'
+print("\n📌 Unique values in 'Duration in month':")
+print(df["Duration in month"].unique())
+
+# Value counts for 'Default status'
+print("\n📌 Count of values in 'Default status':")
+print(df["Default status"].value_counts())
+
+# Max age
+print("\n📌 Maximum Age:", df['Age in Years'].max())
+
+# Filter records where Duration > 24 months
+filtered_data = df[df["Duration in month"] > 24]
+print("\n📌 Filtered data where Duration in month > 24:")
+print(filtered_data.head())
+
+# Normalize 'Age in Years' using Min-Max Scaling
+df["Age in Years"] = (df["Age in Years"] - df["Age in Years"].min()) / (df["Age in Years"].max() - df["Age in Years"].min())
+print("\n📌 Normalized 'Age in Years':")
+print(df["Age in Years"].head(10))
+
+# Update Credit amount column to be in thousands (optional)
+df["Credit amount (in 1000s)"] = df["Credit amount"] / 1000
+
+print("\n📌 Updated DataFrame with 'Credit amount (in 1000s)':")
+print(df[["Credit amount", "Credit amount (in 1000s)"]].head())
+
+# Standard deviation of Credit amount
+print("\n📌 Standard Deviation of 'Credit amount':", df['Credit amount'].std())
+
+# Histogram for Credit Amount
+plt.figure(figsize=(8, 6))
+plt.hist(df["Credit amount"], bins=20, color='blue', edgecolor='red')
+plt.xlabel("Credit Amount")
+plt.ylabel("Frequency")
+plt.title("Histogram of Credit Amount")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
