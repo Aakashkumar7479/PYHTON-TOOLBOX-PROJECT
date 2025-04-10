@@ -1,0 +1,7 @@
+# Histogram with KDE – Literacy Rate
+plt.figure(figsize=(8, 5))
+sns.histplot(df["Literacy Rate"].dropna(), bins=30, kde=True, color="purple")
+plt.title("Literacy Rate Distribution")
+plt.xlabel("Literacy Rate")
+plt.ylabel("Frequency")
+plt.show()
