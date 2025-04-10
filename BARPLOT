@@ -1,0 +1,12 @@
+
+# Barplot – Top 10 Districts by Avg School Count (example metric)
+if "Total Schools" in df.columns:
+    top_schools = df.groupby("District Name")["Total Schools"].mean().nlargest(10)
+    plt.figure(figsize=(10, 5))
+    sns.barplot(x=top_schools.index, y=top_schools.values, palette="coolwarm")
+    plt.title("Top 10 Districts by Avg School Count")
+    plt.xlabel("District")
+    plt.ylabel("Avg Total Schools")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
