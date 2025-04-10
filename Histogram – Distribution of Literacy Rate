@@ -1,0 +1,8 @@
+
+# Histogram – Distribution of Literacy Rate
+plt.figure(figsize=(10, 5))
+plt.hist(df["Literacy Rate"].dropna(), bins=30, color="skyblue", edgecolor="black", alpha=0.7)
+plt.xlabel("Literacy Rate")
+plt.ylabel("Frequency")
+plt.title("Distribution of Literacy Rate")
+plt.show()
